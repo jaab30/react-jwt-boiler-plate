@@ -24,8 +24,8 @@ module.exports = {
             })
 
             // Check if user already exist
-            const data = await User.findOne({ email })
-            if (data) return res.status(400).json({ message: "Email already registered. Please Login" });
+            const user = await User.findOne({ email })
+            if (user) return res.status(400).json({ message: "Email already registered. Please Login" });
 
             // Generate Password Hash
             bcrypt.genSalt(10, (err, salt) => {
@@ -47,6 +47,7 @@ module.exports = {
     },
 
     async login(req, res) {
+
         try {
 
             const { email, password } = req.body;
@@ -54,16 +55,16 @@ module.exports = {
             // Check user enters all fields
             if (!email || !password) return res.status(400).json({ message: "Please enter enter email and password" });
             // Check for correct email
-            const data = await User.find({ email });
+            const user = await User.findOne({ email });
             // if email not found
-            if (!data) return res.status(400).json({ message: "Email not found. Please register" })
+            if (!user) return res.status(400).json({ message: "Email not found. Please register" })
             // if email found compare hashed password with incoming password
-            bcrypt.compare(password, data[0].password, (err, result) => {
+            bcrypt.compare(password, user.password, (err, result) => {
                 if (err) throw err;
                 const match = result;
                 if (!match) return res.status(401).json({ message: "Incorrect Password" })
-                // creat json web token and send it back to client side
-                jwt.sign({ userId: data[0]._id }, config.jwtSecret, (err, token) => {
+                // create json web token and send it back to client side
+                jwt.sign({ userId: user.id }, config.jwtSecret, { expiresIn: 30 * 60 }, (err, token) => {
                     if (err) throw err;
                     res.json({
                         token,
@@ -75,8 +76,18 @@ module.exports = {
         } catch (err) {
             console.log(err);
         }
+    },
+
+    async getUser(req, res) {
+        try {
+            const user = await User.findById(req.userId)
+                .select("-password");
+
+            res.json(user)
+        } catch (err) {
+            throw err;
+
+        }
     }
-
-
 
 };
