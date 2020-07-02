@@ -1,0 +1,13 @@
+/* NavBar Styling */
+.ui.menu:first-child {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Jumbotron/Message styling */
+.ui.message.message-container {
+    text-align: center;
+    padding: 50px;
+    box-shadow: 0;
+    margin: 0;
+}
