@@ -4,7 +4,9 @@ import NavBar from "./NavBar";
 import Home from "../pages/Home";
 import UserDashboard from "../pages/UserDashboard";
 import PageOne from "../pages/PageOne";
-import PageTwo from "../pages/PageTwo";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+
 
 export const App = () => {
     return (
@@ -14,11 +16,9 @@ export const App = () => {
                 <Route path="/" exact component={Home} />
                 <Route path="/dashboard" component={UserDashboard} />
                 <Route path="/pageone" component={PageOne} />
-                <Route path="/pagetwo" component={PageTwo} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
             </Router>
-
-
-
         </>
     )
 }

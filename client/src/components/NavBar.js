@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { Menu } from 'semantic-ui-react';
 
 export const NavBar = () => {
 
@@ -20,11 +19,10 @@ export const NavBar = () => {
         <div className="ui inverted menu">
             <Link to="/" className={setActive("home")} onClick={() => handleItemClick("home")}>Home</Link>
             <Link to="/pageone" className={setActive("pageone")} onClick={() => handleItemClick("pageone")}>Page One</Link>
-            <Link to="/pagetwo" className={setActive("pagetwo")} onClick={() => handleItemClick("pagetwo")}>Page Two</Link>
-            <Menu.Menu position='right'>
+            <div className="right menu">
                 <Link to="/dashboard" className={setActive("dashboard")} onClick={() => handleItemClick("dashboard")}>User Dashboard</Link>
                 <Link to="/login" className={setActive("login")} onClick={() => handleItemClick("login")}>Login</Link>
-            </Menu.Menu>
+            </div>
         </div>
     )
 }
