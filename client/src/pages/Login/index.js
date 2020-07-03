@@ -13,7 +13,7 @@ const Login = () => {
     return (
         <div className="form-container">
             <Header as='h2' secondary="true" textAlign='center'>
-                Log-in to your account
+                Login to your account
                 </Header>
             <UserForm
                 renderMessage={renderFormMessage}
