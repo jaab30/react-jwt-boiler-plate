@@ -1,5 +1,9 @@
 
-export const registerReducer = () => dispatch => {
+
+
+export const registerUser = () => dispatch => {
+
+
 
     dispatch({
         type: "TEST1",

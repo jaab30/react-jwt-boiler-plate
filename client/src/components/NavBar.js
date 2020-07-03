@@ -22,6 +22,7 @@ export const NavBar = () => {
             <div className="right menu">
                 <Link to="/dashboard" className={setActive("dashboard")} onClick={() => handleItemClick("dashboard")}>User Dashboard</Link>
                 <Link to="/login" className={setActive("login")} onClick={() => handleItemClick("login")}>Login</Link>
+                <Link to="/register" className={setActive("register")} onClick={() => handleItemClick("register")}>Register</Link>
             </div>
         </div>
     )
