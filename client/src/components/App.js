@@ -1,5 +1,6 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
+import history from "../history";
 import NavBar from "./NavBar";
 import Home from "../pages/Home";
 import UserDashboard from "../pages/UserDashboard";
@@ -7,17 +8,18 @@ import PageOne from "../pages/PageOne";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
-
 export const App = () => {
     return (
         <>
-            <Router>
+            <Router history={history}>
                 <NavBar />
-                <Route path="/" exact component={Home} />
-                <Route path="/dashboard" component={UserDashboard} />
-                <Route path="/pageone" component={PageOne} />
-                <Route path="/login" component={Login} />
-                <Route path="/register" component={Register} />
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register} />
+                    <Route path="/dashboard" component={UserDashboard} />
+                    <Route path="/pageone" component={PageOne} />
+                </Switch>
             </Router>
         </>
     )

@@ -8,7 +8,6 @@ module.exports = {
         try {
 
             const { email, password } = req.body;
-            console.log(email, password)
             // Check user enters all fields
             if (!email || !password) return res.status(400).json({ message: "Please provide email and password" });
             // Check the user enters the right formatted email
@@ -35,9 +34,17 @@ module.exports = {
                     // Add hashed password to new user object
                     newUser.password = hash;
                     //Save user to DB
-                    const userData = await newUser.save();
-                    //After successful register, send email information back to client side
-                    res.json({ email });
+                    const user = await newUser.save();
+                    console.log("before token", user);
+                    // create json web token and send it back to client side
+                    jwt.sign({ userId: user.id }, config.jwtSecret, { expiresIn: 30 * 60 }, (err, token) => {
+                        if (err) throw err;
+                        res.json({
+                            token,
+                            email
+                        })
+                    })
+
                 })
             });
 

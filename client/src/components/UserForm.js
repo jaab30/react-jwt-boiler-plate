@@ -5,14 +5,9 @@ import { Field, reduxForm } from "redux-form";
 
 const UserForm = (props) => {
 
-    const onSubmit = (values) => {
-        console.log(values);
-
-    }
-
     return (
         <>
-            <Form onSubmit={props.handleSubmit(onSubmit)} size='large'>
+            <Form onSubmit={props.handleSubmit(props.onSubmit)} size='large'>
                 <Segment>
                     <Field
                         name="email"
@@ -42,7 +37,7 @@ const renderInput = ({ input, label }) => {
 
         <div className="field">
             <div className="ui fluid left icon input">
-                <input {...input} autoComplete="off" placeholder={label} />
+                <input {...input} autoComplete="off" placeholder={label} type={`${input.name === "email" ? "text" : "password"}`} />
                 <i aria-hidden="true" className={`${input.name === "email" ? "user" : "lock"} icon`}></i>
             </div>
         </div>
