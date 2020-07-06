@@ -1,19 +1,39 @@
 
-import React from 'react';
-import { Button, Form, Message, Segment } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { Button, Form, Message, Segment, Label } from 'semantic-ui-react';
 import { Field, reduxForm } from "redux-form";
+import { clearErrors } from "../actions/authActions";
 
 const UserForm = (props) => {
 
+    const error = useSelector(state => state.errors);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+        if (error.message) {
+            setErrorMessage(error.message)
+            dispatch(clearErrors())
+        }
+
+    }, [error])
+
+
     return (
         <>
+
             <Form onSubmit={props.handleSubmit(props.onSubmit)} size='large'>
+
                 <Segment>
                     <Field
                         name="email"
                         component={renderInput}
                         label="E-mail address"
                     />
+                    {errorMessage ? <Label className="pointingMssg" basic color='red'>{errorMessage}</Label> : ""}
                     <Field
                         name="password"
                         component={renderInput}

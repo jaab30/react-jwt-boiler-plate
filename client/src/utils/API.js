@@ -8,8 +8,8 @@ export default {
     login(data) {
         return axios.post("/auth/login", data)
     },
-    loadUser() {
-        return axios.get("/auth/user")
+    loadUser(headers) {
+        return axios.get("/auth/user", headers)
     }
 
 }

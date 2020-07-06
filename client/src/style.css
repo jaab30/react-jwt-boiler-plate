@@ -14,7 +14,14 @@
 
 .form-container{
     /* min-height: 400px; */
+    text-align: center;
     width: 300px;
     margin: 0 auto;
     padding-top: 50px;
+}
+
+.ui.pointingMssg.pointingMssg{
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
 }

@@ -1,14 +1,26 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Header } from "semantic-ui-react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import UserForm from "../../components/UserForm";
 import { loginUser } from "../../actions/authActions";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+
+const Login = (props) => {
+    console.log(props);
+
+
+    const { isAuthenticated } = useSelector(state => state.auth)
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            props.history.push("/pageone")
+        }
+
+    })
 
     const renderFormMessage = () => {
         return <>New to us ? <Link to="/register">Register</Link></>
