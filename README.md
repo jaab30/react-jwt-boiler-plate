@@ -4,7 +4,7 @@
 ## Online Example & Deployment:
 
 This application was deployed to Heroku services.
--  Link: http://tix-generator.herokuapp.com/
+-  Link: https://mern-auth-boiler-plate-jwt.herokuapp.com/
 
 ## Description
 
