@@ -6,9 +6,8 @@ import Logout from "./Logout";
 export const NavBar = () => {
 
     const { currentUser, isAuthenticated } = useSelector(state => state.auth)
-
     const [activeItem, setActiveItem] = useState("home");
-
+    // helpers to set active navbar items
     const handleItemClick = (page) => {
         setActiveItem(page)
     }
@@ -18,7 +17,7 @@ export const NavBar = () => {
         }
         return "item"
     }
-
+    // helper to show links on Navbar if user is authenticated
     const showLinks = () => {
         if (isAuthenticated) {
             return (

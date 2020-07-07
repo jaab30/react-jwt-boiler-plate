@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Header, Message, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
-import { loadUser } from "../../actions/authActions";
+import { useSelector } from "react-redux";
 
 export const Home = () => {
+    // access to the isAuthenticated property from the auth reducer state
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(loadUser());
-    }, []);
 
     const showLoginBtn = () => {
         if (!isAuthenticated) {

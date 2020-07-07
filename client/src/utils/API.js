@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-
+    // API request to server side 
     register(data) {
         return axios.post("/auth/register", data)
     },

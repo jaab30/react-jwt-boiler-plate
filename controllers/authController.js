@@ -35,9 +35,8 @@ module.exports = {
                     newUser.password = hash;
                     //Save user to DB
                     const user = await newUser.save();
-                    console.log("before token", user);
                     // create json web token and send it back to client side
-                    jwt.sign({ userId: user.id }, config.jwtSecret, { expiresIn: 30 * 60 }, (err, token) => {
+                    jwt.sign({ userId: user.id }, config.jwtSecret, { expiresIn: 60 * 60 }, (err, token) => {
                         if (err) throw err;
                         res.json({
                             token,
@@ -71,7 +70,7 @@ module.exports = {
                 const match = result;
                 if (!match) return res.status(401).json({ message: "Incorrect Password" })
                 // create json web token and send it back to client side
-                jwt.sign({ userId: user.id }, config.jwtSecret, { expiresIn: 30 * 60 }, (err, token) => {
+                jwt.sign({ userId: user.id }, config.jwtSecret, { expiresIn: 60 * 60 }, (err, token) => {
                     if (err) throw err;
                     res.json({
                         token,
@@ -84,12 +83,14 @@ module.exports = {
             console.log(err);
         }
     },
-
+    // get user information
     async getUser(req, res) {
         try {
+            // find user by id
             const user = await User.findById(req.userId)
+                // return all info but password
                 .select("-password");
-
+            // send info to client
             res.json(user)
         } catch (err) {
             throw err;

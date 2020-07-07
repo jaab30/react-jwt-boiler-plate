@@ -18,7 +18,7 @@ const UserForm = (props) => {
             setErrorMessage(error.message)
             dispatch(clearErrors())
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error])
 
 
@@ -33,7 +33,7 @@ const UserForm = (props) => {
                         component={renderInput}
                         label="E-mail address"
                     />
-                    {errorMessage ? <Label className="pointingMssg" basic color='red'>{errorMessage}</Label> : ""}
+                    {errorMessage ? <Label className="alertMssg" basic color='red'>{errorMessage}</Label> : ""}
                     <Field
                         name="password"
                         component={renderInput}
