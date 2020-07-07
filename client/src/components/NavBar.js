@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logout from "./Logout";
@@ -6,31 +6,21 @@ import Logout from "./Logout";
 export const NavBar = () => {
 
     const { currentUser, isAuthenticated } = useSelector(state => state.auth)
-    const [activeItem, setActiveItem] = useState("home");
-    // helpers to set active navbar items
-    const handleItemClick = (page) => {
-        setActiveItem(page)
-    }
-    const setActive = (page) => {
-        if (activeItem === page) {
-            return "item active"
-        }
-        return "item"
-    }
+
     // helper to show links on Navbar if user is authenticated
     const showLinks = () => {
         if (isAuthenticated) {
             return (
                 <>
-                    <Link to="/dashboard" className={setActive("dashboard")} onClick={() => handleItemClick("dashboard")}>{currentUser.email}</Link>
+                    <Link to="/dashboard" className="item">{currentUser.email}</Link>
                     <Logout />
                 </>
             )
         } else {
             return (
                 <>
-                    <Link to="/login" className={setActive("login")} onClick={() => handleItemClick("login")}>Login</Link>
-                    <Link to="/register" className={setActive("register")} onClick={() => handleItemClick("register")}>Register</Link>
+                    <Link to="/login" className="item">Login</Link>
+                    <Link to="/register" className="item">Register</Link>
                 </>
             )
         }
@@ -39,8 +29,8 @@ export const NavBar = () => {
 
     return (
         <div className="ui inverted menu">
-            <Link to="/" className={setActive("home")} onClick={() => handleItemClick("home")}>Home</Link>
-            {isAuthenticated ? <Link to="/pageone" className={setActive("pageone")} onClick={() => handleItemClick("pageone")}>Page One</Link> : ""}
+            <Link to="/" className="item">Home</Link>
+            {isAuthenticated ? <Link to="/pageone" className="item">Page One</Link> : ""}
             <div className="right menu">
                 {showLinks()}
             </div>

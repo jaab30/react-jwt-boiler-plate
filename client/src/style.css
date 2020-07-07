@@ -19,8 +19,8 @@
     padding-top: 50px;
 }
 /* UserForm alert message */
-.ui.pointingMssg.alertMssg{
+.ui.alertMssg {
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 1em;
     text-align: center;
 }
