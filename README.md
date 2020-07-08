@@ -58,7 +58,7 @@ If you have any questions about the repo, open an issue or contact [jaab30](http
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jaab30/ticketGen)
 
-## Video Preview
+<!-- ## Video Preview -->
 
 <!-- [<img src="https://user-images.githubusercontent.com/40499942/83711110-511fe400-a5f0-11ea-9fc9-e3397e3b0cb9.jpg" alt="app video" width="600px"/>](https://www.youtube.com/watch?v=6_Ur7afd5zE&feature=youtu.be) -->
 
