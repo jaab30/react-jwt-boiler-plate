@@ -10,6 +10,7 @@ import PageOne from "../pages/PageOne";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./PrivateRoute";
+import NoMatch from "../pages/NoMatch";
 
 export const App = () => {
 
@@ -29,6 +30,7 @@ export const App = () => {
                     <Route path="/register" component={Register} />
                     <PrivateRoute path="/dashboard" component={UserDashboard} />
                     <PrivateRoute path="/pageone" component={PageOne} />
+                    <Route component={NoMatch} />
                 </Switch>
             </Router>
         </>
