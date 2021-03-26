@@ -2,6 +2,11 @@ const router = require("express").Router();
 const authRoutes = require("./auth");
 const path = require("path");
 
+
+api.get('/health', (req, res) => {
+    res.json({status: 'alive'});
+  });
+  
 // Routes for authentication
 router.use("/auth", authRoutes);
 
