@@ -16,6 +16,8 @@ app.use(express.json())
 //     app.use(express.static(path.join(__dirname, "./client/build")))
 // };
 app.use(express.static(path.join(__dirname, "./client/build")))
+
+    console.log("MONGO: ", config.MONGO_URI)
 // connect to Mongo DB 
 mongoose.connect(config.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true })
     .then(() => console.log(`Mongo DB Succesfully Connected`))
