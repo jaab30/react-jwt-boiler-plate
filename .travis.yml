@@ -1,0 +1,28 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+script:
+  - docker build -t jaab30/react-jwt .
+  - docker build -t jaab30/react-jwt-nginx ./nginx
+
+after_success:
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push jaab30/react-jwt
+  - docker push jaab30/react-jwt-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-2'
+  app: 'react-jwt-auth'
+  env: 'Reactjwtauth-env'
+  bucket_name: 'elasticbeanstalk-us-east-2-902288401987'
+  bucket_path: 'react-jwt'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
