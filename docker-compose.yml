@@ -10,6 +10,5 @@ services:
       - /app/client/node_modules
       - /app/node_modules
       - .:/app
-    environment:
-      - JWT_SECRET=boiler
-      - DATABASE_INFO=mongodb+srv://jaab2021:KxerqPauBRCzufbi@cluster0.eiyfi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+    env_file:
+      - docker-var.env
