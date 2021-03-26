@@ -3,8 +3,9 @@
 
 ## Online Example & Deployment:
 
-This application was deployed to Heroku services.
--  Link: https://mern-auth-boiler-plate-jwt.herokuapp.com/
+This application was deployed to Heroku and AWS Elastic Beanstalk using Docker Containers.
+-  Heroku Link: https://mern-auth-boiler-plate-jwt.herokuapp.com/
+-  AWS Link: http://reactjwtauth-env.eba-ptb6tqcr.us-east-2.elasticbeanstalk.com/
 
 ## Description
 
